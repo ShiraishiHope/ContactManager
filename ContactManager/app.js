@@ -3,7 +3,7 @@ const bodyParser= require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const contactRoutes = require("./routes/contactRoutes");
-const contactApiRoutes = require("./routes/api/contactApiRoutes");
+const apiRouter = require("./routes/api/contactApiRoutes");
 const Contact = require("./models/contact")
 
 
@@ -38,8 +38,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //display start api of routers for userApiRoute
+app.use("/api",apiRouter);
 app.use("/",contactRoutes);
-app.use("/api",contactApiRoutes);
+
 
 
 //start express server
